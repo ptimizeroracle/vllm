@@ -198,6 +198,7 @@ def test_logprobs_bitwise_batch_invariance_bs1_vs_bsN(
         print(f"{'=' * 80}\n")
 
     llm = LLM(
+            enforce_eager=True,
         model=TEST_MODEL,
         tensor_parallel_size=tp_size,
         max_num_seqs=128,
@@ -413,6 +414,7 @@ def test_simple_generation(backend):
     model = TEST_MODEL
 
     llm = LLM(
+            enforce_eager=True,
         model=model,
         max_num_seqs=1,
         tensor_parallel_size=int(os.getenv("VLLM_TP_SIZE", "1")),
@@ -479,6 +481,7 @@ def test_logprobs_without_batch_invariance_should_fail(
     print(f"{'=' * 80}\n")
 
     llm = LLM(
+            enforce_eager=True,
         model=TEST_MODEL,
         tensor_parallel_size=tp_size,
         max_num_seqs=32,
@@ -698,6 +701,7 @@ def test_decode_logprobs_match_prefill_logprobs(
         print(f"{'=' * 80}\n")
 
     llm = LLM(
+            enforce_eager=True,
         model=TEST_MODEL,
         tensor_parallel_size=tp_size,
         max_num_seqs=32,
